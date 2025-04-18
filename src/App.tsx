@@ -1,15 +1,11 @@
 import React from 'react';
 import { Box, Container, Typography, Button, AppBar, Toolbar } from '@mui/material';
-import { Parallax } from 'react-parallax';
 import { motion } from 'framer-motion';
-
-// Update image paths to work with GitHub Pages
-const heroImage = process.env.PUBLIC_URL + '/images/hero-bg.jpg';
-const productImage = process.env.PUBLIC_URL + '/images/product.jpg';
+import { HeroBackground, ProductBackground } from './components/BackgroundSVGs';
 
 const App: React.FC = () => {
   return (
-    <Box>
+    <Box sx={{ bgcolor: '#0a0a0a' }}>
       {/* Navigation */}
       <AppBar position="fixed" sx={{ background: 'rgba(10, 10, 10, 0.8)', backdropFilter: 'blur(10px)' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -26,40 +22,42 @@ const App: React.FC = () => {
       </AppBar>
 
       {/* Hero Section */}
-      <Parallax bgImage={heroImage} strength={500}>
-        <Box
-          sx={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            position: 'relative',
-          }}
-        >
-          <Container maxWidth="lg">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+      <Box
+        sx={{
+          minHeight: '100vh',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+        }}
+      >
+        <HeroBackground />
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: 800,
+                background: 'linear-gradient(45deg, #00f2ff, #7000ff)',
+                backgroundClip: 'text',
+                textFillColor: 'transparent',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                mb: 4,
+                textAlign: 'center',
+              }}
             >
-              <Typography
-                variant="h1"
-                sx={{
-                  fontWeight: 800,
-                  background: 'linear-gradient(45deg, #00f2ff, #7000ff)',
-                  backgroundClip: 'text',
-                  textFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  mb: 4,
-                }}
-              >
-                The Future is Now
-              </Typography>
-              <Typography variant="h4" sx={{ mb: 6, color: 'text.secondary' }}>
-                Experience innovation like never before
-              </Typography>
+              The Future is Now
+            </Typography>
+            <Typography variant="h4" sx={{ mb: 6, color: 'text.secondary', textAlign: 'center' }}>
+              Experience innovation like never before
+            </Typography>
+            <Box sx={{ textAlign: 'center' }}>
               <Button
                 variant="contained"
                 size="large"
@@ -74,13 +72,13 @@ const App: React.FC = () => {
               >
                 Discover More
               </Button>
-            </motion.div>
-          </Container>
-        </Box>
-      </Parallax>
+            </Box>
+          </motion.div>
+        </Container>
+      </Box>
 
       {/* Features Section */}
-      <Box sx={{ bgcolor: 'background.default', py: 15 }}>
+      <Box sx={{ py: 15, position: 'relative' }}>
         <Container maxWidth="lg">
           <motion.div
             initial={{ opacity: 0 }}
@@ -140,51 +138,47 @@ const App: React.FC = () => {
       </Box>
 
       {/* Product Showcase */}
-      <Parallax bgImage={productImage} strength={300}>
-        <Box sx={{ minHeight: '80vh', position: 'relative' }}>
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              bgcolor: 'rgba(0,0,0,0.5)',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Container maxWidth="lg">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
+      <Box sx={{ minHeight: '80vh', position: 'relative' }}>
+        <ProductBackground />
+        <Box
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            height: '80vh',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Container maxWidth="lg">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <Typography variant="h2" sx={{ mb: 4 }}>
+                Experience Excellence
+              </Typography>
+              <Typography variant="h5" sx={{ mb: 4, maxWidth: 600 }}>
+                Discover our latest innovations that are shaping the future of technology.
+              </Typography>
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  borderColor: 'primary.main',
+                  color: 'primary.main',
+                  '&:hover': {
+                    borderColor: 'primary.light',
+                  },
+                }}
               >
-                <Typography variant="h2" sx={{ mb: 4 }}>
-                  Experience Excellence
-                </Typography>
-                <Typography variant="h5" sx={{ mb: 4, maxWidth: 600 }}>
-                  Discover our latest innovations that are shaping the future of technology.
-                </Typography>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    borderColor: 'primary.main',
-                    color: 'primary.main',
-                    '&:hover': {
-                      borderColor: 'primary.light',
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
-              </motion.div>
-            </Container>
-          </Box>
+                Learn More
+              </Button>
+            </motion.div>
+          </Container>
         </Box>
-      </Parallax>
+      </Box>
 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', py: 6 }}>
