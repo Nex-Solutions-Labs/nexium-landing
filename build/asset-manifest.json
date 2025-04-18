@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/nexium_landing/static/js/main.c8123ad4.js",
+    "main.js": "/nexium_landing/static/js/main.7231bfb7.js",
     "index.html": "/nexium_landing/index.html",
-    "main.c8123ad4.js.map": "/nexium_landing/static/js/main.c8123ad4.js.map"
+    "main.7231bfb7.js.map": "/nexium_landing/static/js/main.7231bfb7.js.map"
   },
   "entrypoints": [
-    "static/js/main.c8123ad4.js"
+    "static/js/main.7231bfb7.js"
   ]
 }
