@@ -3,8 +3,9 @@ import { Box, Container, Typography, Button, AppBar, Toolbar } from '@mui/materi
 import { Parallax } from 'react-parallax';
 import { motion } from 'framer-motion';
 
-const heroImage = '/images/hero-bg.jpg'; // You'll need to add this image
-const productImage = '/images/product.jpg'; // You'll need to add this image
+// Update image paths to work with GitHub Pages
+const heroImage = process.env.PUBLIC_URL + '/images/hero-bg.jpg';
+const productImage = process.env.PUBLIC_URL + '/images/product.jpg';
 
 const App: React.FC = () => {
   return (
