@@ -2,21 +2,28 @@ import React from 'react';
 import { Box, Container, Typography, Button, AppBar, Toolbar } from '@mui/material';
 import { motion } from 'framer-motion';
 import { HeroBackground, ProductBackground } from './components/BackgroundSVGs';
+import AnimatedBackground from './components/AnimatedBackground';
 
 const App: React.FC = () => {
   return (
     <Box sx={{ bgcolor: '#0a0a0a' }}>
+      <AnimatedBackground />
+      
       {/* Navigation */}
-      <AppBar position="fixed" sx={{ background: 'rgba(10, 10, 10, 0.8)', backdropFilter: 'blur(10px)' }}>
+      <AppBar position="fixed" sx={{ 
+        background: 'rgba(10, 10, 10, 0.8)', 
+        backdropFilter: 'blur(10px)',
+        zIndex: 2 
+      }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>
             NEXIUM
           </Typography>
           <Box>
-            <Button color="inherit">Products</Button>
-            <Button color="inherit">Technology</Button>
+            <Button color="inherit">Solutions</Button>
+            <Button color="inherit">Services</Button>
             <Button color="inherit">About</Button>
-            <Button variant="contained" color="primary">Contact</Button>
+            <Button variant="contained" color="primary">Get Started</Button>
           </Box>
         </Toolbar>
       </AppBar>
@@ -50,12 +57,13 @@ const App: React.FC = () => {
                 WebkitTextFillColor: 'transparent',
                 mb: 4,
                 textAlign: 'center',
+                position: 'relative',
               }}
             >
-              The Future is Now
+              Transform Your Business with Custom Software
             </Typography>
             <Typography variant="h4" sx={{ mb: 6, color: 'text.secondary', textAlign: 'center' }}>
-              Experience innovation like never before
+              Innovative solutions for the digital age
             </Typography>
             <Box sx={{ textAlign: 'center' }}>
               <Button
@@ -70,7 +78,7 @@ const App: React.FC = () => {
                   },
                 }}
               >
-                Discover More
+                Schedule a Consultation
               </Button>
             </Box>
           </motion.div>
@@ -97,7 +105,7 @@ const App: React.FC = () => {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              Revolutionary Technology
+              Our Expertise
             </Typography>
             <Box
               sx={{
@@ -106,12 +114,25 @@ const App: React.FC = () => {
                 gap: 4,
               }}
             >
-              {[1, 2, 3].map((item) => (
+              {[
+                {
+                  title: 'Custom Software',
+                  description: 'Tailored solutions designed specifically for your business needs and workflows.'
+                },
+                {
+                  title: 'Cloud Solutions',
+                  description: 'Scalable cloud infrastructure and applications for modern enterprises.'
+                },
+                {
+                  title: 'Digital Transformation',
+                  description: 'Strategic guidance and implementation to modernize your business processes.'
+                }
+              ].map((item, index) => (
                 <motion.div
-                  key={item}
+                  key={index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: item * 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
                 >
                   <Box
@@ -124,10 +145,10 @@ const App: React.FC = () => {
                     }}
                   >
                     <Typography variant="h5" sx={{ mb: 2 }}>
-                      Feature {item}
+                      {item.title}
                     </Typography>
                     <Typography color="text.secondary">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                      {item.description}
                     </Typography>
                   </Box>
                 </motion.div>
@@ -157,10 +178,10 @@ const App: React.FC = () => {
               viewport={{ once: true }}
             >
               <Typography variant="h2" sx={{ mb: 4 }}>
-                Experience Excellence
+                Enterprise Solutions
               </Typography>
               <Typography variant="h5" sx={{ mb: 4, maxWidth: 600 }}>
-                Discover our latest innovations that are shaping the future of technology.
+                From custom ERPs to cloud-native applications, we build software that drives business growth.
               </Typography>
               <Button
                 variant="outlined"
@@ -173,7 +194,7 @@ const App: React.FC = () => {
                   },
                 }}
               >
-                Learn More
+                View Case Studies
               </Button>
             </motion.div>
           </Container>
@@ -184,7 +205,7 @@ const App: React.FC = () => {
       <Box sx={{ bgcolor: 'background.paper', py: 6 }}>
         <Container maxWidth="lg">
           <Typography variant="body2" align="center" color="text.secondary">
-            © 2024 NEXIUM. All rights reserved.
+            © 2024 NEXIUM. Creating innovative software solutions for a digital world.
           </Typography>
         </Container>
       </Box>

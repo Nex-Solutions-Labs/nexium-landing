@@ -2,7 +2,7 @@
   "name": "nexium-landing",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nex-solutions-labs.github.io/nexium_landing",
+  "homepage": "https://nex-solutions-labs.github.io/nexium-landing/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
